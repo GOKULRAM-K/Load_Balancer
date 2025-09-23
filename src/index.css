@@ -1,0 +1,218 @@
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ---- Marker styling for custom StatusMarker ---- */
+.custom-marker-root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+}
+
+/* small district label above the circle when pinned (hidden in icon, used in popup) */
+.custom-marker-district {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+/* pulsing ring for degraded and critical */
+.custom-marker-pulse {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  top: -6px;
+  left: -6px;
+  z-index: -1;
+  opacity: 0.85;
+  animation: pulse 2s infinite;
+  filter: blur(4px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(1.7);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* small number inside marker */
+.custom-marker-num {
+  font-size: 12px;
+  line-height: 12px;
+  user-select: none;
+}
+
+/* marker shapes fallback (non-color) for colorblind: icon glyph */
+.custom-marker-glyph {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Legend styles (if placed on top of map) */
+.map-legend {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  font-size: 13px;
+}
+.map-legend-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.map-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ---- Marker styling for custom StatusMarker ---- */
+.custom-marker-root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+}
+
+.custom-marker-pulse {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  top: -6px;
+  left: -6px;
+  z-index: -1;
+  opacity: 0.85;
+  animation: pulse 2s infinite;
+  filter: blur(4px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(1.7);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.custom-marker-num {
+  font-size: 12px;
+  line-height: 12px;
+  user-select: none;
+}
+
+.map-legend {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  font-size: 13px;
+}
